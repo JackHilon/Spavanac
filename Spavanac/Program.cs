@@ -6,6 +6,9 @@ namespace Spavanac
     {
         static void Main(string[] args)
         {
+            // Spavanac
+            // https://open.kattis.com/problems/spavanac
+
             var myTime = EnterHoursMinutes();
 
             var result = Make24MinutesEarly(myTime);
@@ -54,10 +57,14 @@ namespace Spavanac
                 {
                     ans[k] = int.Parse(arr[k]);
                 }
+                if (ans[0] < 0 || ans[1] > 23)
+                    throw new ArgumentException();
+                if (ans[1] < 0 || ans[1] > 59)
+                    throw new ArgumentException();
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.GetType().ToString() + ": " +ex.Message);
                 return EnterHoursMinutes();
             }
             return ans;
